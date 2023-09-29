@@ -8,18 +8,18 @@ import { globSync } from 'glob';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const dirName = `${__dirname}/../scores`;
-execSync(`rm -rf ./${dirName}`);
+execSync(`rm -rf ${dirName}`);
 execSync(`mkdir -p ${dirName}`);
 
 slug.charmap['_'] = '-';
 
-const [scoreDir] = process.argv.slice(2);
+const [dir] = process.argv.slice(2);
 
-if (!fs.existsSync(scoreDir) || !fs.lstatSync(scoreDir).isDirectory()) {
-    throw new Error(`${scoreDir} is not a directory. Pass path to scores directory as argv.`);
+if (!fs.existsSync(dir) || !fs.lstatSync(dir).isDirectory()) {
+    throw new Error(`${dir} is not a directory. Pass path to scores directory as argv.`);
 }
 
-globSync(`${scoreDir}/**/*.musicxml`).forEach(file => {
+globSync(`${dir}/**/*.musicxml`).forEach(file => {
     const fileName = file.split('/').pop();
     console.log(fileName)
     const name = fileName.replace(/\.[^/]+$/, '');
