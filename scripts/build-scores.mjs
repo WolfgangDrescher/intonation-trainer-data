@@ -16,7 +16,7 @@ slug.charmap['_'] = '-';
 const [dir] = process.argv.slice(2);
 
 if (!fs.existsSync(dir) || !fs.lstatSync(dir).isDirectory()) {
-    throw new Error(`${dir} is not a directory. Pass path to scores directory as argv.`);
+    throw new Error(`${dir} is not a directory. Pass path to directory as argv.`);
 }
 
 globSync(`${dir}/**/*.musicxml`).forEach(file => {
