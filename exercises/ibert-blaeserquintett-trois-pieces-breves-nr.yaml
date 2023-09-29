@@ -1,40 +1,47 @@
-scoreFilename: ibert-trois-pieces-no3.mei
 audioFilename: ibert-blaeserquintett-trois-pieces-breves-nr.wav
 composer: Ibert, Jacques
-title: Trois pièces brèves, III. Assez lent, T. 1-10
+description: null
 instrumentation: Fl, Ob, Kl (B), Hr (F), Fg
-performers:
 license: cc-by-sa-4.0
-year: 1920
-description:
+performers: null
+scoreFilename: ibert-trois-pieces-no3.mei
+title: Trois pièces brèves, III. Assez lent, T. 1-10
 variants:
     -
-        id: 1
         audioFilename: ibert-blaeserquintett-trois-pieces-breves-nr-fehler.wav
         difficulty: 1
+        id: 1
         markers:
             -
-                noteIds: [n6aecyx]
-                measure: 1
                 comment: Fl des3 hoch
-                time: 0.40
-            -
-                noteIds: [npwk1s5, n1ktdzxf]
                 measure: 1
-                comment: (Ob des2 + c2 hoch)
-                time: 2.40
+                noteIds:
+                    - n6aecyx
+                time: 0.4
             -
-                noteIds: [nm8te10]
-                measure: 4
+                comment: (Ob des2 + c2 hoch)
+                measure: 1
+                noteIds:
+                    - npwk1s5
+                    - n1ktdzxf
+                time: 2.4
+            -
                 comment: Klar des1 tief
+                measure: 4
+                noteIds:
+                    - nm8te10
                 time: 9.72
             -
-                noteIds: [nn5um19]
-                measure: 5
                 comment: Hn e hoch
-                time: 13.30
+                measure: 5
+                noteIds:
+                    - nn5um19
+                time: 13.3
             -
-                noteIds: [n1wtk92a, n1y42go7]
-                measure: 7
                 comment: Fg Kontra-H hoch
+                measure: 7
+                noteIds:
+                    - n1wtk92a
+                    - n1y42go7
                 time: 20.55
+year: 1920

@@ -1,39 +1,49 @@
-scoreFilename: Beethoven op 74_2 T24-49.mei
 audioFilename: Beethoven_Op74_Satz2_RICHTIG.wav
-title: Beethoven Op. 74, 2. Satz, Takt 24-49
 description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+scoreFilename: Beethoven op 74_2 T24-49.mei
+title: Beethoven Op. 74, 2. Satz, Takt 24-49
 variants:
     -
-        id: 1
         audioFilename: Beethoven_Op74_Satz2_Falsch.wav
+        id: 1
         markers:
             -
-                noteIds: ['n14yce2d']
+                comment: Vl1 ces3 hoch
                 measure: 30
-                comment: 'Vl1 ces3 hoch'
+                noteIds:
+                    - n14yce2d
                 time: 10.1
             -
-                noteIds: ['n15iyvoi', 'n4z873f']
+                comment: Vc Ges tief
                 measure: 34
-                comment: 'Vc Ges tief'
+                noteIds:
+                    - n15iyvoi
+                    - n4z873f
                 time: 28
             -
-                noteIds: ['nlctiz8']
+                comment: Va es hoch
                 measure: 35
-                comment: 'Va es hoch'
+                noteIds:
+                    - nlctiz8
                 time: 30
             -
-                noteIds: ['n1nahl3k', 'nwv84ud', 'ni3uoqs']
+                comment: Va es + ges tief
                 measure: 37
-                comment: 'Va es + ges tief'
+                noteIds:
+                    - n1nahl3k
+                    - nwv84ud
+                    - ni3uoqs
                 time: 37
             -
-                noteIds: ['n1g5wcqm']
+                comment: Vl2 as tief
                 measure: 41
-                comment: 'Vl2 as tief'
+                noteIds:
+                    - n1g5wcqm
                 time: 50
             -
-                noteIds: ['n1h2e61q', 'n5zf451']
+                comment: Vl1 hes1 + b1 tief
                 measure: 45
-                comment: 'Vl1 hes1 + b1 tief'
+                noteIds:
+                    - n1h2e61q
+                    - n5zf451
                 time: 59
