@@ -92,7 +92,7 @@ globSync(`${dir}/**/*.txt`).forEach(file => {
         instrumentation: null,
         performers: null,
         license: 'cc-by-sa-4.0',
-        year: 0,
+        year: null,
         description: null,
         variants,
     };
