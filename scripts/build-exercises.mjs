@@ -2,7 +2,6 @@ import slug from 'slug';
 import fs from 'fs';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
 import { globSync } from 'glob';
 import yaml from 'js-yaml';
 
