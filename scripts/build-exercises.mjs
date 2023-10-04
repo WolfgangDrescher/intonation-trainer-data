@@ -81,7 +81,8 @@ globSync(`${dir}/**/*.txt`).forEach(file => {
         variants,
     };
 
-    const sluggedFilename = `${slug(name.replace(/.?Schnitt.?marker$/, ''))}.yaml`;
+    const normalizedName = name.replace(/fehler(.?\d)?/i, '').replace(/(.?Schnitt)?.?marker$/i, '');
+    const sluggedFilename = `${slug(normalizedName)}.yaml`;
     const newPath = `${dirName}/${sluggedFilename}`.replaceAll(' ', '\\ ');
     const yamlString = yaml.dump(config, {
         indent: 4,
