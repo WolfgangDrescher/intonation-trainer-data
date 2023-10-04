@@ -22,7 +22,7 @@ if (!fs.existsSync(dir) || !fs.lstatSync(dir).isDirectory()) {
 globSync(`${dir}/**/*.musicxml`).forEach(file => {
     const fileName = file.split('/').pop();
     console.log(fileName)
-    const name = fileName.replace(/\.[^./]+$/, '');
+    const name = fileName.replace(/\.[^./]+$/, '').replace('.', '-');
     const escapedFilePath = `${file}`.replaceAll(' ', '\\ ');
     const sluggedFilename = `${slug(name)}.mei`;
     const newPath = `${dirName}/${sluggedFilename}`.replaceAll(' ', '\\ ');
