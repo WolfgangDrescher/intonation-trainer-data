@@ -8,7 +8,7 @@ import { globSync } from 'glob';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const dirName = `${__dirname}/../scores`;
-execSync(`rm -rf ${dirName}`);
+// execSync(`rm -rf ${dirName}`);
 execSync(`mkdir -p ${dirName}`);
 
 slug.charmap['_'] = '-';
