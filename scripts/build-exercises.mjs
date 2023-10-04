@@ -20,10 +20,18 @@ if (!fs.existsSync(dir) || !fs.lstatSync(dir).isDirectory()) {
 function timecodesToSeconds(matches) {
     if (!matches) return null;
     let s = 0;
-    s += parseInt(matches[1], 10) * 60 * 60;
-    s += parseInt(matches[2], 10) * 60;
-    s += parseInt(matches[3], 10);
-    s += parseInt(matches[4], 10) / 25;
+    if (typeof matches[1] === 'undefined' && typeof matches[2] === 'undefined') {
+        // Std:Min:Sek
+        s += parseInt(matches[3] ?? 0, 10) * 60 * 60;
+        s += parseInt(matches[4] ?? 0, 10) * 60;
+        s += parseInt(matches[5] ?? 0, 10);
+    } else {
+        // Std:Min:Sek:Frames
+        s += parseInt(matches[2] ?? 0, 10) * 60 * 60;
+        s += parseInt(matches[3] ?? 0, 10) * 60;
+        s += parseInt(matches[4] ?? 0, 10);
+        s += parseInt(matches[5] ?? 0, 10) / 25;
+    }
     return s;
 }
 
@@ -36,12 +44,15 @@ globSync(`${dir}/**/*.txt`).forEach(file => {
     const lines = content.split('\n').map(l => l.trim());
     const variants = [];
     let variant = null;
-    let startTime = 0;
+    let startTime = null;
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
-        const matches = line.match(/([\d]{2}):([\d]{2}):([\d]{2}):([\d]{2})/);
+        if (line.startsWith('E:')) {
+            continue;
+        }
+        const matches = line.match(/(([\d]{2}):)?([\d]{2}):([\d]{2}):([\d]{2})/);
         const time = timecodesToSeconds(matches);
-        if (time && line.match(/[\W]fehler|falsch/i) || (i + 1 >= lines.length)) {
+        if (time !== null && line.match(/[\W]fehler|falsch/i) || (i + 1 >= lines.length)) {
             if (variant) {
                 variants.push(variant);
             }
@@ -54,7 +65,8 @@ globSync(`${dir}/**/*.txt`).forEach(file => {
             startTime = timecodesToSeconds(matches);
             continue;
         }
-        if (time && startTime) {
+        if (time !== null && startTime !== null) {
+
             const markerTime = timecodesToSeconds(matches);
             let [, comment, measure] = line.replace(/\t{2,}/g, '\t').split('\t').map(l => l.trim());
             const matchMeasureNumber = comment.match(/^T\D?(\d+)/);
