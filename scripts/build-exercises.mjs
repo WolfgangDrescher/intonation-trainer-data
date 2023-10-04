@@ -56,12 +56,17 @@ globSync(`${dir}/**/*.txt`).forEach(file => {
         }
         if (time && startTime) {
             const markerTime = timecodesToSeconds(matches);
-            const [, comment, measure] = line.replace(/\t{2,}/g, '\t').split('\t').map(l => l.trim());
-            const barNumber = measure?.replace(/[^0-9-]/g, '');
+            let [, comment, measure] = line.replace(/\t{2,}/g, '\t').split('\t').map(l => l.trim());
+            const matchMeasureNumber = comment.match(/^T\D?(\d+)/);
+            let barNumber = measure?.replace(/[^0-9-]/g, '');
+            if (matchMeasureNumber) {
+                barNumber = matchMeasureNumber[1];
+                comment = comment.replace(/^T\D?(\d+)/, '').trim();
+            }
             const time = parseFloat((markerTime - startTime).toFixed(2));
             variant.markers.push({
                 noteIds: [],
-                measure: measure ? (barNumber.match(/^\d+$/) ? parseInt(barNumber, 10) : barNumber) : null,
+                measure: barNumber ? (barNumber.match(/^\d+$/) ? parseInt(barNumber, 10) : barNumber) : null,
                 comment: comment ?? null,
                 time,
             });
