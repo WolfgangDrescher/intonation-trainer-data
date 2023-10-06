@@ -52,7 +52,7 @@ globSync(`${dir}/**/*.txt`).forEach(file => {
         }
         const matches = line.match(/(([\d]{2}):)?([\d]{2}):([\d]{2}):([\d]{2})/);
         const time = timecodesToSeconds(matches);
-        if (time !== null && line.match(/[\W]fehler|falsch/i) || (i + 1 >= lines.length)) {
+        if (time !== null && line.match(/[\W]fehler|[^\/]falsch/i) || (i + 1 >= lines.length)) {
             if (variant) {
                 variants.push(variant);
             }
