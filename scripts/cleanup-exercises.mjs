@@ -21,6 +21,13 @@ globSync(`${dirName}/**/*.yaml`).forEach(file => {
     config.scoreFilename ??= null;
     config.title ??= null;
     config.year ??= null;
+    config.variants ??= [];
+    for (let i = 0; i < config.variants.length; i++) {
+        config.variants[i].audioFilename ??= null;
+        config.variants[i].difficulty ??= 0;
+        config.variants[i].id ??= i + 1;
+        config.variants[i].markers ??= [];
+    }
     fs.writeFileSync(file, yaml.dump(config, {
         indent: 4,
         lineWidth: -1,
