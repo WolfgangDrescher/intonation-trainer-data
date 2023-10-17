@@ -27,6 +27,7 @@ globSync(`${dirName}/**/*.yaml`).forEach(file => {
         config.variants[i].difficulty ??= 0;
         config.variants[i].id ??= i + 1;
         config.variants[i].markers ??= [];
+        config.variants[i].note ??= null;
     }
     fs.writeFileSync(file, yaml.dump(config, {
         indent: 4,
