@@ -61,6 +61,7 @@ globSync(`${dir}/**/*.txt`).forEach(file => {
                 audioFilename: null,
                 difficulty: 0,
                 markers: [],
+                note: null,
             };
             startTime = timecodesToSeconds(matches);
             continue;
